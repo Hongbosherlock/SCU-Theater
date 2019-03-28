@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>选座</title>
+
+	<link rel="dns-prefetch" href="//p0.meituan.net">
+	<link rel="dns-prefetch" href="//p1.meituan.net">
+	<link rel="dns-prefetch" href="//ms0.meituan.net">
+	<link rel="dns-prefetch" href="//ms1.meituan.net">
+	<link rel="dns-prefetch" href="//analytics.meituan.com">
+	<link rel="dns-prefetch" href="//report.meituan.com">
+	<link rel="dns-prefetch" href="//frep.meituan.com">
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="cleartype" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<script async="" src="../js/meitu/mta.min.js"></script><script>"use strict";!function(){var i=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"_Owl_",n=window;n[i]||(n[i]={isRunning:!1,isReady:!1,preTasks:[],dataSet:[],use:function(i,t){this.isReady&&n.Owl&&n.Owl[i](t),this.preTasks.push({api:i,data:[t]})},add:function(i){this.dataSet.push(i)},run:function(){var t=this;if(!this.isRunning){this.isRunning=!0;var i=n.onerror;n.onerror=function(){this.isReady||this.add({type:"jsError",data:arguments}),i&&i.apply(n,arguments)}.bind(this),(n.addEventListener||n.attachEvent)("error",function(i){t.isReady||t.add({type:"resError",data:[i]})},!0)}}},n[i].run())}();</script>
+	<script>
+        cid = "c_2yzd0xp5";
+        ci = 59;
+        window.system = {"seatsPrice":{"1":{"expression":"37X1","price":"37"},"2":{"expression":"37X2","price":"74"},"3":{"expression":"37X3","price":"111"},"4":{"expression":"37X4","price":"148"},"5":{"expression":"37X5","price":"185"}},"remind":"","uuid":"5F7F65D0EFD411E883F23738DBE9B1BED1EEFFF53B354B3BB55AFFAFD9D24962","cinemaId":16399};
+
+        window.openPlatform = '';
+        window.openPlatformSub = '';
+
+	</script>
+	<link rel="stylesheet" href="../css/title.css">
+
+	<link rel="stylesheet" href="//ms0.meituan.net/mywww/common.4b838ec3.css">
+	<link rel="stylesheet" href="//ms0.meituan.net/mywww/cinemas-seat.d66e64ba.css">
+	<script crossorigin="anonymous" src="../js/meitu/stat.74891044.js"></script><script async="" defer="" charset="utf-8" src="//analytics.meituan.com/source/stable/web.js"></script>
+	<script>if(window.devicePixelRatio >= 2) { document.write('<link rel="stylesheet" href="//ms0.meituan.net/mywww/image-2x.8ba7074d.css"/>') }</script><link rel="stylesheet" href="//ms0.meituan.net/mywww/image-2x.8ba7074d.css">
+
+	<meta name="lx:autopv" content="off">
+	<meta name="lx:appnm" content="movie"><meta name="lx:category" content="movie"><meta charset="utf-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="keywords" content="jQuery,选座">
+	<link rel="stylesheet" type="text/css" href="../css/main.css" />
+	<style type="text/css">
+		.demo{width:700px; margin:40px auto 0 auto; min-height:450px;}
+		@media screen and (max-width: 360px) {.demo {width:340px}}
+
+		.front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
+		.booking-details {float: right;position: relative;width:200px;height: 450px; }
+		.booking-details h3 {margin: 5px 5px 0 0;font-size: 16px;}
+		.booking-details p{line-height:26px; font-size:16px; color:#999}
+		.booking-details p span{color:#666}
+		div.seatCharts-cell {color: #182C4E;height: 25px;width: 25px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
+		div.seatCharts-seat {color: #fff;cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+		div.seatCharts-row {height: 35px;}
+		div.seatCharts-seat.available {background-color: #B9DEA0;}
+		div.seatCharts-seat.focused {background-color: #76B474;border: none;}
+		div.seatCharts-seat.selected {background-color: #E6CAC4;}
+		div.seatCharts-seat.unavailable {background-color: #472B34;cursor: not-allowed;}
+		div.seatCharts-container {border-right: 1px dotted #adadad;width: 400px;padding: 20px;float: left;}
+		div.seatCharts-legend {padding-left: 0px;position: absolute;bottom: 16px;}
+		ul.seatCharts-legendList {padding-left: 0px;}
+		.seatCharts-legendItem{float:left; width:90px;margin-top: 10px;line-height: 2;}
+		span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
+		.checkout-button {display: block;width:80px; height:24px; line-height:20px;margin: 10px auto;border:1px solid #999;font-size: 14px; cursor:pointer}
+		#selected-seats {max-height: 150px;overflow-y: auto;overflow-x: none;width: 200px;}
+		#selected-seats li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center}
+	</style>
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script type="text/javascript">
+		console.log(document.referrer);
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        var id=getUrlParam('id');
+        var name = getUrlParam('name');
+        name = decodeURI(name);
+        console.log(name);
+        // var month = getUrlParam('month');
+        var date = getUrlParam('date');
+        var time= getUrlParam('time');
+        var price =getUrlParam('price');
+        var aloneprice =getUrlParam('price');
+        var hall=getUrlParam('hall');
+        hall = decodeURI(hall);
+        var movietype=getUrlParam('type');
+        movietype = decodeURI(movietype);
+        var language=getUrlParam('language');
+        language = decodeURI(language);
+        var movielength=getUrlParam('duration');
+        movielength = decodeURI(movielength);
+
+        $(function(){
+            $(".booking-details").prepend("<p>影片：<span>"+name+"</span></p>"+
+                "<p>时间：<span>"+date+" "+time+"</span></p>"+
+                "<p>座位：</p>" +
+                "<ul id='selected-seats'></ul>" +
+                "<p>票数：<span id='counter'>0</span></p>" +
+                "<p>总计：<b>￥<span id='total'>0</span></b></p>"
+            );
+        });
+
+		var seat;
+        console.log(id);
+        $.ajax({
+            url: "../schedule/getScheduleById.do?id=" + id,//此后更改为对应controller里的url
+            type: "post",
+            dataType:"json",
+            async: false,
+            data: {},
+            success: function (data) {
+                //此处默认data已经传回来
+                console.log(data);
+                var result  =data.schedule;
+                try{
+                    seat= JSON.parse(result.data);
+                }
+                catch (error){
+                    console.log(error);
+                }
+                console.log(seat);
+
+
+
+
+            }
+        });
+
+
+
+
+                console.log("jinru");
+			  console.log(seat);
+                var eachcount = 0;
+                var havesell = new Array();
+                var count = 0;
+                $.each(seat.seats, function (i, item) {
+                    console.log(seat.seats[eachcount].occupied);
+                    if (seat.seats[eachcount].occupied == 1) {
+                        var row = seat.seats[eachcount].row;
+                        var col = seat.seats[eachcount].col;
+                        havesell[count] = "" + row + "_" + col + "";
+                        count++;
+                    }
+                    eachcount++;
+                });
+
+                //  var havesell=["1_2","4_4","4_5","6_6","6_7","8_5","8_6","8_8","10_1", "10_2"];
+                //只需要把上面一段代码放到success里!!!!!
+
+	</script>
+</head>
+
+<body>
+<div class="header">
+	<div class="header-inner">
+		<!--<a href="" class="logo" data-act="icon-click"></a>-->
+
+		<a  href="user_buy.html" class="ooo" data-act="icon-click"></a><a class="ooo2"></a>
+		<div class="city-container" data-val="{currentcityid:59 }">
+			<div class="city-selected">
+				<div class="city-name">
+					成都
+					<span class="caret"></span>
+				</div>
+			</div>s
+		</div>
+
+
+		<div class="nav">
+			<ul class="navbar">
+
+			</ul>
+		</div>
+
+		<div class="user-info">
+			<div class="user-avatar has-login">
+				<img src="../images/avatar.jpg">
+				<span class="caret"></span>
+				<!--<ul class="user-menu">-->
+					<!--<li class="text login-name" title="cpX509580302"><a href="../jsp/user_profile.jsp">基本信息</a></li>-->
+					<!--<li class="text"><a href="javascript:void 0" class="J-logout" data-act="logout-click"/><a href="../index.jsp">退出登录</a></li>-->
+				<!--</ul>-->
+			</div>
+		</div>
+
+	</div>
+</div>
+<div class="header-placeholder"></div>
+
+<div id="main">
+	<div class="demo">
+		<div id="seat-map">
+			<div class="front">屏幕</div>
+		</div>
+		<div class="booking-details">
+			<button type="button" onclick="jump()" class="checkout-button" id="checkout-button">确定购买</button>
+			<br>
+			<p/>
+			<div id="legend"></div>
+		</div>
+
+		<div style="clear:both"></div>
+	</div>
+
+	<br/>
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.seat-charts.min.js"></script>
+<script type="text/javascript" src="../js/my.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var arr = new Array();  //先声明一维
+    for(var k=0;k<100;k++){    //一维长度为i,i为变量，可以根据实际情况改变
+        arr[k]=new Array();  //声明二维，每一个一维数组里面的一个元素都是一个数组；
+        for(var j=0;j<2;j++){   //一维数组里面每个元素数组可以包含的数量p，p也是一个变量；
+            arr[k][j]="";    //这里将变量初始化，我这边统一初始化为空，后面在用所需的值覆盖里面的值
+        }
+    }
+    price=parseFloat(price);
+    //var price = 80; //票价应该是从上一个页面传过去的,此处不再次定义
+    var i=0,m=0;
+    var total=0;
+    var seatarr = new Array();
+  var newmap = seat.seat_map;
+
+    //$.get("pictureServlet",function(havesell);//这里是从后台取已经售出去的座位的数据数据
+    //var havesell=["1_2","4_4","4_5","6_6","6_7","8_5","8_6","8_7","8_8","10_1", "10_2"];
+
+
+    /*获取数组元素的下标*/
+    $(document).ready(function() {
+        var $cart = $('#selected-seats'), //座位区
+            $counter = $('#counter'), //票数
+            $total = $('#total'); //总计金额
+
+        var sc = $('#seat-map').seatCharts({
+            map: newmap,
+            naming : {
+                top : false,
+                getLabel : function (character, row, column) {
+                    return column;
+                }
+            },
+            legend : { //定义图例
+                node : $('#legend'),
+                items : [
+                    [ 'a', 'available',   '可选座' ],
+                    [ 'a', 'unavailable', '已售出']
+                ]
+            },
+            click: function () { //点击事件
+                if (this.status() == 'available') { //可选座
+                    $('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>')
+                        .attr('id', 'cart-item-'+this.settings.id)
+                        .data('seatId', this.settings.id)
+                        .appendTo($cart);
+                    $counter.text(sc.find('selected').length+1);
+                    total=recalculateTotal(sc);
+                    total+=price;
+                    total = total.toFixed(1);
+                    $total.text(total);
+                    arr[i][0]=this.settings.row+1;
+                    arr[i][1]=this.settings.label;
+
+                 //    $.each(seat.seats, function (t,obj ) {
+                //
+                 //        if (obj.occupied === 0) {
+                 //            console.log("obj：");
+                 //            console.log(obj.row);
+                 //            console.log(arr[i][0]);
+                 //            if( obj.row==arr[i][0]&&obj.col==arr[i][1]) {
+                 //                seatarr[j] = obj.id;
+                 //            }
+                 //        }
+                //
+                 //    });
+                 //    console.log("array：")
+				// console.log(seatarr);
+                    i++;
+                    // j++;
+                    console.log(arr[i-1]);
+                    return 'selected';
+                } else if (this.status() == 'selected') { //已选中
+                    //更新数量
+                    $counter.text(sc.find('selected').length-1);
+                    //更新总计
+                    total=recalculateTotal(sc);
+                    total-=price;
+                    total = total.toFixed(1);
+                    $total.text(total);
+                    //删除已预订座位
+                    var deleterow=this.settings.row+1;
+                    var deleteseat=this.settings.label;
+                    var deletearr=[deleterow,deleteseat];
+                    // console.log(deletearr);
+                    for(var m=0; m<arr.length; m++) {
+                        if(arr[m][0] == deletearr[0]&&arr[m][1] == deletearr[1]){
+                            arr[m][0]="";
+                            arr[m][1]="";
+                            break;
+                        }
+                    }
+                    // console.log("final");
+                    // console.log(arr);
+                    $('#cart-item-'+this.settings.id).remove();
+                    //可选座,并且更新传参数组
+                    return 'available';
+                } else if (this.status() == 'unavailable') { //已售出
+                    return 'unavailable';
+                } else {
+                    return this.style();
+                }
+            }
+        });
+        //已售出的座位
+        sc.get(havesell).status('unavailable');
+
+    });
+    //计算总金额
+    function recalculateTotal(sc) {
+        var total = 0;
+        sc.find('selected').each(function () {
+            total += price;
+        });
+        return total;
+    }
+</script>
+<script>
+    function jump(){
+        var str="";
+        for (var j=0;j<arr.length;j++)
+        {
+
+            if(arr[j][0]==""){
+                continue;
+            }else{
+                $.each(seat.seats, function (t,obj ) {
+
+                        if( obj.row==arr[j][0]&&obj.col==arr[j][1]) {
+                            seatarr[m] = obj.id;
+                        }
+
+
+                });
+                str+=arr[j][0];
+                str+=",";
+                str+=arr[j][1];
+                str+=",";
+
+            }
+            m++;
+        }
+        console.log(seatarr);
+
+        window.location.href="../jsp/user_pay.jsp?&name="+encodeURI(encodeURI(name))+"&date="+date+"&time="+time+"&hall="+encodeURI(encodeURI(hall))+"&aloneprice="+aloneprice+"&price="+total+"&movielength="+encodeURI(encodeURI(movielength))+"&movietype="+encodeURI(encodeURI(movietype))+"&language="+encodeURI(encodeURI(language))+"&seat="+str+"&seatarr="+seatarr+"&id="+id;
+    }
+</script>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style>
+
+<div class="footer" style="visibility: visible;">
+
+
+	<p>成都SCU文化传媒有限公司</p>
+</div>
+</body>
+
+</html>
+

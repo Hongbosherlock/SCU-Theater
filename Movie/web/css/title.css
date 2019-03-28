@@ -1,0 +1,13 @@
+
+ .ooo {
+    float: left;
+    width: 100px;
+    height: 93px;
+    background-image: url(hello.png);
+}
+ .ooo2 {
+     float: left;
+     width: 150px;
+     height: 70px;
+     background-image: url(3.png);
+ }

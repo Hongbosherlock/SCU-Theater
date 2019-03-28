@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>场次管理</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- base -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/laydate/theme/default/laydate.css" media="all">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+
+</head>
+<body class="gray-bg top-navigation">
+<title>场次管理</title>
+<div class="container-fluid">
+    <nav class="navbar navbar-static-top" role="navigation">
+
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin.html" > 用户管理</a>
+
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_vipManage.html" > 会员管理 <span ></span></a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_movieManage.html"  > 电影管理 <span ></span></a>
+                </li>
+                <li class="active">
+                    <a aria-expanded="false" role="button" href="admin_scheduleManage.html">场次管理<span ></span></a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_orderManage.html">订单管理<span ></span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="admin_login.html">
+                        <i class="fa fa-sign-out"></i> 退出
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div id="toolbar" class="btn-group">
+        <!-- 工具栏 -->
+        <button id="btn_add" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button id="btn_delete" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+        </button>
+        <button id="btn_refresh" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>刷新
+        </button>
+        <button id="btn_toggleview" type="button" class="btn btn-default btn-sm">切换视图</button>
+        <button id="btn_togglepage" type="button" class="btn btn-default btn-sm">显隐分页</button>
+        <button id="btn_print" type="button" class="btn btn-default btn-sm">打印</button>
+
+    </div>
+
+    <!-- 表格 -->
+    <div style="height: 95%">
+    <table id="schedules" class="table table-hover"></table>
+    </div>
+    <!-- 新增或修改弹框 -->
+    <div class="modal fade" id="addAndUpdate" tabindex="-1" role="dialog" aria-labelledby="addAndUpdateLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="addAndUpdateLabel">新增场次信息</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="txt_type" class="form-control" id="txt_type" placeholder="操作类型">
+                    <!--<input type="hidden" name="txt_createTime" class="form-control" id="txt_createTime" placeholder="日期">-->
+
+                    <input type="hidden" name="txt_sid" class="form-control" id="txt_sid" placeholder="场次id">
+
+                    <div class="form-group">
+                        <label >日期</label>
+                        <!--<input type="text" name="txt_date" class="form-control" id="txt_date" placeholder="请选择日期">-->
+                        <input type="text" id="date" class="form-control" placeholder="请选择日期">
+
+                    </div>
+                    <div class="form-group">
+                        <label >电影名称</label>
+                        <select id="movie"  name="" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >厅号</label>
+                        <!--<input type="text" name="txt_rid" class="form-control" id="txt_rid" placeholder="厅号">-->
+                        <select id="room"  name="" class="form-control">
+                            <option value="1">1号厅</option>
+                            <option value="2" selected>2号厅</option>
+                            <option value="3">3号厅</option>
+                            <option value="4">4号厅</option>
+                            <option value="5" >5号厅</option>
+                            <option value="6" >6号厅</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label >开始时间</label>
+                        <!--<input type="text" name="txt_startTime" class="form-control" id="txt_startTime" placeholder="开始时间">-->
+                        <input type="text" id="startTime" class="form-control" placeholder="请选择开始时间">
+
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label >结束时间</label>-->
+                        <!--<input type="text" id="endTime" class="form-control" placeholder="请选择结束时间">-->
+
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <label for="txt_price">价格</label>
+                        <input type="text" name="txt_price" class="form-control" id="txt_price" placeholder="价格">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                    <button type="button" id="btn_add_update_submit" class="btn btn-primary btn-sm"
+                            data-dismiss="modal"><span
+                            class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table-export.js"></script>
+<script src="../js/plugins/bootstrap-table/tableExport.js"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script src="../js/bootstrap-datetimepicker.js"></script>
+<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/test.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
+<!-- 自定义js -->
+<script src="../js/content.js?v=1.0.0"></script>
+
+
+<!-- Flot -->
+<script src="../js/plugins/flot/jquery.flot.js"></script>
+<script src="../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../js/plugins/flot/jquery.flot.resize.js"></script>
+
+<!-- ChartJS-->
+<script src="/js/plugins/chartJs/Chart.min.js"></script>
+
+<!-- Peity -->
+<script src="../js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- Peity demo -->
+<script src="../js/demo/peity-demo.js"></script>
+<script src="../js/laydate/laydate.js"></script>
+<script type="text/javascript" src="../js/scheduleManage_table.js"></script>
+<script type="text/javascript" src="../js/scheduleManage_table_crud.js"></script>
+</body>
+</html>

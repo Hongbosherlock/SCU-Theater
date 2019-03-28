@@ -1,0 +1,205 @@
+﻿<html>
+<head>
+
+    <title>电影管理</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- base -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+
+</head>
+<body class="gray-bg top-navigation">
+
+<div class="container-fluid">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!--<div class="navbar-header">-->
+            <!--<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">-->
+                <!--<i class="fa fa-reorder"></i>-->
+            <!--</button>-->
+            <!--<a href="#" class="navbar-brand">阿杰</a>-->
+        <!--</div>-->
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin.html" > 用户管理</a>
+
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_vipManage.html" > 会员管理 <span ></span></a>
+                </li>
+                <li class="active">
+                    <a aria-expanded="false" role="button" href="admin_movieManage.html"  > 电影管理 <span ></span></a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_scheduleManage.html">场次管理<span ></span></a>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="admin_orderManage.html">订单管理<span ></span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="admin_login.html">
+                        <i class="fa fa-sign-out"></i> 退出
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>    <!--导航栏-->
+
+    <div class="row-fluid" id="search">
+        <div class="span12">
+            <div class="control-group form-inline" style="border: 1px solid #ccc;padding: 10px; border-radius: 3px;">
+                <label for="name">查询条件:      </label>
+                <div class="input-group input-group-sm">
+                    <label for="name">电影名称</label>
+                    <input id="name" type="text">
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label">开始日期:</label>-->
+                    <!--<div class="input-group date form_date mr10">-->
+                        <!--<input class="form-control" type="text" value="" id="startDate2">-->
+                    <!--</div>-->
+                    <!--<label class="control-label">结束日期:</label>-->
+                    <!--<div class="input-group date form_date">-->
+                        <!--<input class="form-control" type="text" value="" id="endDate2">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <button id="btn_search" type="button" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                </button>
+                <button id="btn_clean_search" type="button" class="btn btn-danger btn-sm">清空条件</button>
+            </div>
+        </div>
+    </div>   <!--搜索查询-->
+
+    <div id="toolbar" class="btn-group">
+        <!-- 工具栏 -->
+        <button id="btn_add" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button id="btn_delete" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+        </button>
+        <button id="btn_refresh" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>刷新
+        </button>
+        <!--<button id="btn_clean" type="button" class="btn btn-default btn-sm">清空</button>-->
+        <!--<button id="btn_init" type="button" class="btn btn-default btn-sm">初始化</button>-->
+        <button id="btn_toggleview" type="button" class="btn btn-default btn-sm">切换视图</button>
+        <button id="btn_togglepage" type="button" class="btn btn-default btn-sm">显隐分页</button>
+        <button id="btn_print" type="button" class="btn btn-default btn-sm">打印</button>
+        <!--<button id="btn_selectpage" type="button" class="btn btn-default btn-sm">跳转</button>-->
+    </div>
+
+    <!-- 表格 -->
+    <div style="height: 95%">
+    <table id="movies" class="table table-hover"></table>
+    </div>
+
+
+    <!-- 新增或修改弹框 -->
+    <div class="modal fade" id="addAndUpdate" tabindex="-1" role="dialog" aria-labelledby="addAndUpdateLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="addAndUpdateLabel">新增电影信息</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="txt_type" class="form-control" id="txt_type" placeholder="操作类型">
+                    <input type="hidden" name="txt_createTime" class="form-control" id="txt_createTime" placeholder="时间">
+
+                        <input type="hidden" name="txt_movie_id" class="form-control" id="txt_movie_id" placeholder="电影id">
+
+
+                    <div class="form-group">
+                        <label for="txt_name">电影名</label>
+                        <input type="text" name="txt_name" class="form-control" id="txt_name" placeholder="电影名">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_star">主演</label>
+                        <input type="text" name="txt_star" class="form-control" id="txt_star" placeholder="主演">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_mtype">类型</label>
+                        <input type="text" name="txt_mtype" class="form-control" id="txt_mtype" placeholder="类型">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_duration">时长</label>
+                        <input type="text" name="txt_duration" class="form-control" id="txt_duration" placeholder="时长">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_description">简介</label>
+                        <input type="text" name="txt_description" class="form-control" id="txt_description" placeholder="简介">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                    <button type="button" id="btn_add_update_submit" class="btn btn-primary btn-sm"
+                            data-dismiss="modal"><span
+                            class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--新增场次-->
+</div>
+<!-- 全局js -->
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table-export.js"></script>
+<script src="../js/plugins/bootstrap-table/tableExport.js"></script>
+<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script src="../js/bootstrap-datetimepicker.js"></script>
+<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/test.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
+<!-- 自定义js -->
+<script src="../js/content.js?v=1.0.0"></script>
+
+
+<!-- Flot -->
+<script src="../js/plugins/flot/jquery.flot.js"></script>
+<script src="../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../js/plugins/flot/jquery.flot.resize.js"></script>
+
+<!-- ChartJS-->
+<script src="../js/plugins/chartJs/Chart.min.js"></script>
+
+<!-- Peity -->
+<script src="../js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- Peity demo -->
+<script src="../js/demo/peity-demo.js"></script>
+
+<script type="text/javascript" src="../js/user_permission.js"></script>
+<script type="text/javascript" src="../js/movieManage_table.js"></script>
+<script type="text/javascript" src="../js/movieManage_table_crud.js"></script>
+</body>
+</html>

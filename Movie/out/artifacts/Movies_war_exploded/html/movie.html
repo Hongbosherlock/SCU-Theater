@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/icons/user.ico">
+    <title>系统测试</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container theme-showcase" role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="page-header">
+        <h1>ssm demo</h1>
+        <p class="lead">影院售票系统测试</p>
+    </div>
+    <br>
+    <div>
+        <form class="form-inline">
+            <label>电影编号：</label>
+            <input id="movieId" type="number" value="4" class="input-mini">
+            <input type="button" id="getById" class="btn btn-primary" value="查询电影信息"/>
+            <br><br>
+            <label>电影名称：</label>
+            <input id="name" type="text"  class="input-mini">
+            <input type="button" id="update" class="btn btn-primary" value="修改电影名称"/>
+
+        </form>
+    </div>
+    <br>
+    <div ><textarea rows="5" cols="50" id="movieInfo">点击 查询电影信息 按钮获取电影信息…</textarea></div>
+
+    <div>
+        <form class="form-inline">
+            <label>电影编号：</label>
+            <input type="button" id="getAll" class="btn btn-primary" value="查询电影信息"/>
+            <br>
+            <input type="button" id="add" class="btn btn-primary" value="添加电影"/>
+            <br><br>
+
+        </form>
+    </div>
+    <br>
+    <div ><textarea rows="5" cols="50" id="allInfo">点击 查询电影信息 按钮获取电影信息…</textarea></div>
+    <hr>
+    <br/>
+    <!--<div>-->
+        <!--<form class="form-inline">-->
+            <!--<label>学号：</label>-->
+            <!--<input id="no" value="" >-->
+            <!--<label>姓名：</label>-->
+            <!--<input id="name" value="" >-->
+          <!---->
+            <!--<input type="button" id="update" class="btn btn-primary" value="修改学生信息">-->
+        <!--</form>-->
+    <!--</div>-->
+
+</div> <!-- /container theme-showcase -->
+<br>
+<br>
+<br>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">&copy; Build by <a href="#" target="_blank">HongboSherlcok</a>. 2018.</p>
+    </div>
+</footer>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/movie.js"></script>
+</body>
+</html>
